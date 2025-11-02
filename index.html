@@ -14,8 +14,6 @@
             --foreground: #020817;
             --card: #ffffff;
             --card-foreground: #020817;
-            --popover: #ffffff;
-            --popover-foreground: #020817;
             --primary: #2563eb;
             --primary-foreground: #f9fafb;
             --secondary: #f8fafc;
@@ -23,7 +21,6 @@
             --muted: #f1f5f9;
             --muted-foreground: #64748b;
             --accent: #f1f5f9;
-            --accent-foreground: #0f172a;
             --border: #e2e8f0;
             --radius: 0.75rem;
             --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -36,8 +33,6 @@
             --foreground: #f8fafc;
             --card: #1e293b;
             --card-foreground: #f8fafc;
-            --popover: #020817;
-            --popover-foreground: #f8fafc;
             --primary: #3b82f6;
             --primary-foreground: #020817;
             --secondary: #334155;
@@ -45,12 +40,10 @@
             --muted: #334155;
             --muted-foreground: #94a3b8;
             --accent: #334155;
-            --accent-foreground: #f8fafc;
             --border: #334155;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -62,29 +55,67 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 30px 20px;
         }
 
-        /* --- Header & Navigation --- */
+        /* Header */
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 40px;
-            border-bottom: 1px solid var(--border);
+            padding-bottom: 32px;
+            border-bottom: 2px solid var(--border);
             margin-bottom: 40px;
         }
 
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .profile-image {
+            flex-shrink: 0;
+            animation: fadeInScale 0.6s ease-out;
+        }
+
+        .profile-image svg {
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .profile-image:hover svg {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .header-title { flex: 1; }
+
         .header-title h1 { 
-            font-size: 2.5rem; 
+            font-size: 2.25rem; 
             font-weight: 700;
-            background: linear-gradient(90deg, var(--primary), #7c3aed);
+            background: linear-gradient(135deg, var(--primary), #7c3aed);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
+            background-clip: text;
+            margin-bottom: 6px;
+            line-height: 1.2;
         }
+
         .header-title p { 
             color: var(--muted-foreground); 
             font-size: 1.125rem; 
@@ -94,43 +125,53 @@
         .theme-switcher {
             cursor: pointer; 
             background: var(--secondary); 
-            border-radius: 999px;
-            padding: 10px; 
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border: 1px solid var(--border);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s;
             box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
         }
+
         .theme-switcher:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.05);
             box-shadow: var(--shadow);
         }
-        .theme-switcher .fa-sun { display: block; }
-        .theme-switcher .fa-moon { display: none; }
+
+        .theme-switcher i { font-size: 1.25rem; }
+        .theme-switcher .fa-sun { display: block; color: #f59e0b; }
+        .theme-switcher .fa-moon { display: none; color: #818cf8; }
         .dark .theme-switcher .fa-sun { display: none; }
         .dark .theme-switcher .fa-moon { display: block; }
 
-        /* --- Card & Section Styles --- */
+        /* Sections */
         .section { 
-            margin-bottom: 60px; 
+            margin-bottom: 48px; 
             opacity: 0; 
             transform: translateY(20px); 
             transition: opacity 0.6s ease, transform 0.6s ease; 
         }
         .section.is-visible { opacity: 1; transform: translateY(0); }
+
         .section-title { 
             font-size: 1.75rem; 
             font-weight: 700; 
-            margin-bottom: 24px; 
+            margin-bottom: 20px; 
             position: relative;
-            padding-bottom: 12px;
+            padding-bottom: 10px;
         }
+
         .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 60px;
-            height: 4px;
+            width: 50px;
+            height: 3px;
             background: linear-gradient(90deg, var(--primary), #7c3aed);
             border-radius: 2px;
         }
@@ -139,40 +180,53 @@
             background: var(--card); 
             border: 1px solid var(--border);
             border-radius: var(--radius); 
-            padding: 28px;
+            padding: 24px;
             margin-bottom: 20px; 
             box-shadow: var(--shadow-sm);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
         }
+
         .card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow);
+            border-color: var(--primary);
         }
 
-        /* --- Specific Section Styles --- */
+        /* Contact Links */
         .contact-links { 
             display: flex; 
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px;
         }
+
         .contact-links a { 
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             color: var(--muted-foreground); 
             text-decoration: none; 
-            padding: 10px 16px;
+            padding: 10px 18px;
             border-radius: 8px;
             background: var(--secondary);
-            transition: all 0.2s; 
+            transition: all 0.3s; 
+            font-weight: 500;
+            font-size: 0.9375rem;
+            border: 1px solid transparent;
         }
+
         .contact-links a:hover { 
             color: var(--primary); 
             background: var(--accent);
             transform: translateY(-2px);
             box-shadow: var(--shadow-sm);
+            border-color: var(--primary);
         }
 
+        .contact-links a i {
+            font-size: 1.1rem;
+        }
+
+        /* Experience */
         .experience-item .job-header { 
             display: flex; 
             justify-content: space-between; 
@@ -181,61 +235,83 @@
             flex-wrap: wrap;
             gap: 12px;
         }
+
         .experience-item h4 { 
             font-size: 1.25rem; 
             font-weight: 600; 
             color: var(--primary);
         }
+
         .experience-item .date { 
             color: var(--muted-foreground); 
             white-space: nowrap; 
             font-weight: 500;
             background: var(--secondary);
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.875rem;
         }
+
         .experience-item .company { 
             color: var(--muted-foreground); 
-            margin-bottom: 16px; 
+            margin-bottom: 14px; 
             font-weight: 500;
+            font-style: italic;
         }
+
         .experience-item ul { 
             list-style: none; 
             padding-left: 0;
         }
+
         .experience-item li { 
-            margin-bottom: 12px; 
+            margin-bottom: 10px; 
             padding-left: 24px;
             position: relative;
+            line-height: 1.7;
         }
+
         .experience-item li::before {
             content: '▹';
             position: absolute;
             left: 0;
             color: var(--primary);
+            font-weight: bold;
         }
 
+        /* Skills */
         .skills-grid { 
             display: flex; 
             flex-wrap: wrap; 
             gap: 10px; 
         }
+
         .skill-badge {
-            background-color: var(--secondary); 
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
             color: var(--secondary-foreground);
             padding: 8px 16px; 
             border-radius: 20px; 
             font-size: 0.875rem;
             font-weight: 500;
-            transition: all 0.2s;
-        }
-        .skill-badge:hover {
-            background-color: var(--primary);
-            color: var(--primary-foreground);
-            transform: translateY(-2px);
+            transition: all 0.3s;
+            border: 1px solid transparent;
         }
 
+        .skill-badge:hover {
+            background: linear-gradient(135deg, var(--primary), #7c3aed);
+            color: var(--primary-foreground);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--primary);
+        }
+
+        .card h4 {
+            font-size: 1.125rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        /* Projects */
         .project-card .project-header { 
             display: flex; 
             justify-content: space-between; 
@@ -244,144 +320,215 @@
             flex-wrap: wrap;
             gap: 12px;
         }
+
         .project-card h4 { 
             font-size: 1.25rem; 
             font-weight: 600;
             color: var(--primary);
         }
+
         .project-card .view-demo { 
             color: var(--primary); 
             text-decoration: none; 
             font-weight: 500; 
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
-            transition: all 0.2s;
+            transition: all 0.3s;
             padding: 6px 12px;
             border-radius: 6px;
         }
+
         .project-card .view-demo:hover { 
             background: var(--secondary);
             transform: translateX(4px);
         }
 
+        /* Resume Downloads */
         .resume-downloads {
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px;
         }
+
         .download-card {
             background: var(--card); 
             border: 1px solid var(--border);
             border-radius: var(--radius); 
             padding: 28px; 
             text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s; 
+            transition: all 0.3s ease; 
             box-shadow: var(--shadow-sm);
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
+
         .download-card:hover { 
             transform: translateY(-6px); 
             box-shadow: var(--shadow-lg); 
+            border-color: var(--primary);
         }
+
         .download-card i { 
             font-size: 2.5rem; 
             color: var(--primary); 
             margin-bottom: 16px; 
         }
+
         .download-card h3 {
             font-size: 1.25rem;
             margin-bottom: 12px;
             font-weight: 600;
         }
+
         .download-card p {
             color: var(--muted-foreground);
             margin-bottom: 20px;
             flex-grow: 1;
         }
+
         .download-card .btn {
-            display: block; 
+            display: flex; 
             width: 100%; 
-            background-color: var(--primary); 
-            color: var(--primary-foreground);
+            background: linear-gradient(135deg, var(--primary), #7c3aed);
+            color: white;
             text-decoration: none; 
             padding: 12px; 
             border-radius: 8px; 
             margin-top: auto;
-            transition: background-color 0.2s, transform 0.2s;
-            font-weight: 500;
-            display: flex;
+            transition: all 0.3s;
+            font-weight: 600;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            border: none;
         }
+
         .download-card .btn:hover { 
-            background-color: #1d4ed8; 
             transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+            filter: brightness(1.1);
         }
-        .dark .download-card .btn:hover { background-color: #60a5fa; }
 
         /* Notification */
         .notification { 
             position: fixed; 
             bottom: 20px; 
             right: 20px; 
-            background: #22c55e; 
+            background: linear-gradient(135deg, #22c55e, #16a34a);
             color: white; 
-            padding: 15px 20px; 
-            border-radius: 10px; 
+            padding: 16px 24px; 
+            border-radius: 12px; 
             box-shadow: var(--shadow-lg); 
             transform: translateY(150px); 
             opacity: 0; 
-            transition: all 0.4s ease-out; 
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
             z-index: 1000; 
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-weight: 500;
         }
+
         .notification.show { transform: translateY(0); opacity: 1; }
 
-        /* Responsive adjustments */
+        /* Responsive */
+        @media (min-width: 768px) {
+            .container { padding: 50px 40px; }
+        }
+
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
+            .header-content {
+                justify-content: center;
+                text-align: center;
             }
-            
+
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-image svg {
+                width: 70px;
+                height: 70px;
+            }
+
+            .header-title h1 { font-size: 1.875rem; }
+            .header-title p { font-size: 1rem; }
+
             .contact-links {
                 justify-content: center;
             }
-            
-            .experience-item .job-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
+
+            .experience-item .job-header,
             .project-card .project-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
+            .section-title { font-size: 1.5rem; }
+            .card { padding: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 24px 16px; }
+
+            .profile-image svg {
+                width: 60px;
+                height: 60px;
+            }
+
+            .header-title h1 { font-size: 1.625rem; }
+
+            .contact-links {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .contact-links a {
+                width: 100%;
+                justify-content: center;
+            }
+
             .resume-downloads {
                 grid-template-columns: 1fr;
+            }
+
+            .notification {
+                left: 16px;
+                right: 16px;
+                bottom: 16px;
             }
         }
     </style>
 </head>
 <body>
-
     <div class="container">
         <header class="header">
-            <div class="header-title">
-                <h1>Neeraj Butola</h1>
-                <p>Full Stack Developer</p>
-            </div>
-            <div class="theme-switcher" id="theme-toggle">
-                <i class="fas fa-sun"></i>
-                <i class="fas fa-moon"></i>
+            <div class="header-content">
+                <div class="profile-section">
+                    <div class="profile-image">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="40" cy="40" r="40" fill="url(#gradient1)"/>
+                            <text x="40" y="52" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="white" text-anchor="middle" dominant-baseline="middle">NB</text>
+                            <defs>
+                                <linearGradient id="gradient1" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#3b82f6"/>
+                                    <stop offset="1" stop-color="#7c3aed"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="header-title">
+                        <h1>Neeraj Butola</h1>
+                        <p>Full Stack Developer</p>
+                    </div>
+                </div>
+                <div class="theme-switcher" id="theme-toggle">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </div>
             </div>
         </header>
 
@@ -418,7 +565,7 @@
                         <li>Engineered a full-stack observability solution using OpenTelemetry for traces and metrics, Grafana for visualization and analysis, and CloudWatch for alerting, slashing application downtime by 20%</li>
                     </ul>
                 </div>
-<div class="card experience-item">
+                <div class="card experience-item">
                     <div class="job-header">
                         <h4>Associate Software Developer</h4>
                         <span class="date">May 2023 – Jul 2025</span>
@@ -433,7 +580,7 @@
                         <li>Designed and configured scalable cloud infrastructure on AWS, utilizing Route 53 for DNS management and Application Load Balancers (ALB) for intelligent traffic routing across services.</li>
                         <li>Optimized system performance through caching, load balancing, and CDNs, achieving a 35% reduction in latency.</li>
                         <li>Implemented comprehensive unit and integration tests (Jest, PyTest), which led to a 25% decrease in production bugs.</li>
-                    </ul>s
+                    </ul>
                 </div>
                  <div class="card experience-item">
                     <div class="job-header">
@@ -571,23 +718,18 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Theme Toggler ---
             const themeToggle = document.getElementById('theme-toggle');
             const htmlEl = document.documentElement;
 
-            // Function to set theme
             const setTheme = (theme) => {
                 if (theme === 'dark') {
                     htmlEl.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
                 } else {
                     htmlEl.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
                 }
             };
             
-            // Check for saved theme in local storage or user's system preference
-            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            const savedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
             setTheme(savedTheme);
 
             themeToggle.addEventListener('click', () => {
@@ -595,7 +737,6 @@
                 setTheme(currentTheme);
             });
 
-            // --- Scroll Animations ---
             const sections = document.querySelectorAll('.section');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -610,7 +751,6 @@
                 observer.observe(section);
             });
             
-            // --- Download Notification ---
             function showDownloadNotification(branch) {
                 const notification = document.getElementById('notification');
                 const notificationText = document.getElementById('notificationText');
