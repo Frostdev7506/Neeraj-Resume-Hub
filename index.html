@@ -3,294 +3,634 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neeraj Butola - Resume Collection</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Neeraj Butola - Full Stack Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --background: #ffffff;
+            --foreground: #020817;
+            --card: #ffffff;
+            --card-foreground: #020817;
+            --popover: #ffffff;
+            --popover-foreground: #020817;
+            --primary: #2563eb;
+            --primary-foreground: #f9fafb;
+            --secondary: #f8fafc;
+            --secondary-foreground: #0f172a;
+            --muted: #f1f5f9;
+            --muted-foreground: #64748b;
+            --accent: #f1f5f9;
+            --accent-foreground: #0f172a;
+            --border: #e2e8f0;
+            --radius: 0.75rem;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+
+        .dark {
+            --background: #0f172a;
+            --foreground: #f8fafc;
+            --card: #1e293b;
+            --card-foreground: #f8fafc;
+            --popover: #020817;
+            --popover-foreground: #f8fafc;
+            --primary: #3b82f6;
+            --primary-foreground: #020817;
+            --secondary: #334155;
+            --secondary-foreground: #f8fafc;
+            --muted: #334155;
+            --muted-foreground: #94a3b8;
+            --accent: #334155;
+            --accent-foreground: #f8fafc;
+            --border: #334155;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            transition: background-color 0.3s, color 0.3s;
+            line-height: 1.6;
         }
+
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
+            padding: 40px 20px;
         }
+
+        /* --- Header & Navigation --- */
         .header {
-            text-align: center;
-            margin-bottom: 50px;
-            opacity: 0;
-            animation: fadeInDown 0.8s ease-out forwards;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
         }
-        .header h1 {
-            color: white;
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .header p {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-        .resume-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        .resume-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease-out;
-            opacity: 0;
-            transform: translateY(20px);
-            position: relative;
-            overflow: hidden;
-            will-change: transform, opacity;
-        }
-        .resume-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-        .resume-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+
+        .header-title h1 { 
+            font-size: 2.5rem; 
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), #7c3aed);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            opacity: 0;
-            transform: scale(0.8);
-            animation: fadeInScale 0.6s ease-out 0.2s forwards;
+            margin-bottom: 8px;
         }
-        .card-title {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 15px;
-            font-weight: 600;
-            opacity: 0;
-            transform: translateY(10px);
-            animation: slideUp 0.5s ease-out 0.4s forwards;
-        }
-        .card-description {
-            color: #666;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            opacity: 0;
-            transform: translateY(10px);
-            animation: slideUp 0.5s ease-out 0.6s forwards;
-        }
-        .card-actions {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            opacity: 0;
-            transform: translateY(10px);
-            animation: slideUp 0.5s ease-out 0.8s forwards;
-        }
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
+        .header-title p { 
+            color: var(--muted-foreground); 
+            font-size: 1.125rem; 
             font-weight: 500;
-            text-decoration: none;
-            display: inline-flex;
+        }
+
+        .theme-switcher {
+            cursor: pointer; 
+            background: var(--secondary); 
+            border-radius: 999px;
+            padding: 10px; 
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+        .theme-switcher:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        .theme-switcher .fa-sun { display: block; }
+        .theme-switcher .fa-moon { display: none; }
+        .dark .theme-switcher .fa-sun { display: none; }
+        .dark .theme-switcher .fa-moon { display: block; }
+
+        /* --- Card & Section Styles --- */
+        .section { 
+            margin-bottom: 60px; 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: opacity 0.6s ease, transform 0.6s ease; 
+        }
+        .section.is-visible { opacity: 1; transform: translateY(0); }
+        .section-title { 
+            font-size: 1.75rem; 
+            font-weight: 700; 
+            margin-bottom: 24px; 
+            position: relative;
+            padding-bottom: 12px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #7c3aed);
+            border-radius: 2px;
+        }
+
+        .card {
+            background: var(--card); 
+            border: 1px solid var(--border);
+            border-radius: var(--radius); 
+            padding: 28px;
+            margin-bottom: 20px; 
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        /* --- Specific Section Styles --- */
+        .contact-links { 
+            display: flex; 
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .contact-links a { 
+            display: flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.2s ease-out;
-            position: relative;
-            overflow: hidden;
-            will-change: transform;
+            color: var(--muted-foreground); 
+            text-decoration: none; 
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: var(--secondary);
+            transition: all 0.2s; 
         }
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-        .btn-primary:hover {
+        .contact-links a:hover { 
+            color: var(--primary); 
+            background: var(--accent);
             transform: translateY(-2px);
-            box-shadow: 0 8px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: var(--shadow-sm);
         }
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        .experience-item .job-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            margin-bottom: 8px; 
+            flex-wrap: wrap;
+            gap: 12px;
         }
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .experience-item h4 { 
+            font-size: 1.25rem; 
+            font-weight: 600; 
+            color: var(--primary);
         }
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .experience-item .date { 
+            color: var(--muted-foreground); 
+            white-space: nowrap; 
+            font-weight: 500;
+            background: var(--secondary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
         }
+        .experience-item .company { 
+            color: var(--muted-foreground); 
+            margin-bottom: 16px; 
+            font-weight: 500;
+        }
+        .experience-item ul { 
+            list-style: none; 
+            padding-left: 0;
+        }
+        .experience-item li { 
+            margin-bottom: 12px; 
+            padding-left: 24px;
+            position: relative;
+        }
+        .experience-item li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .skills-grid { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+        }
+        .skill-badge {
+            background-color: var(--secondary); 
+            color: var(--secondary-foreground);
+            padding: 8px 16px; 
+            border-radius: 20px; 
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .skill-badge:hover {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            transform: translateY(-2px);
+        }
+
+        .project-card .project-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .project-card h4 { 
+            font-size: 1.25rem; 
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .project-card .view-demo { 
+            color: var(--primary); 
+            text-decoration: none; 
+            font-weight: 500; 
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+        .project-card .view-demo:hover { 
+            background: var(--secondary);
+            transform: translateX(4px);
+        }
+
+        .resume-downloads {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 24px;
+        }
+        .download-card {
+            background: var(--card); 
+            border: 1px solid var(--border);
+            border-radius: var(--radius); 
+            padding: 28px; 
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s; 
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .download-card:hover { 
+            transform: translateY(-6px); 
+            box-shadow: var(--shadow-lg); 
+        }
+        .download-card i { 
+            font-size: 2.5rem; 
+            color: var(--primary); 
+            margin-bottom: 16px; 
+        }
+        .download-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .download-card p {
+            color: var(--muted-foreground);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .download-card .btn {
+            display: block; 
+            width: 100%; 
+            background-color: var(--primary); 
+            color: var(--primary-foreground);
+            text-decoration: none; 
+            padding: 12px; 
+            border-radius: 8px; 
+            margin-top: auto;
+            transition: background-color 0.2s, transform 0.2s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .download-card .btn:hover { 
+            background-color: #1d4ed8; 
+            transform: translateY(-2px);
+        }
+        .dark .download-card .btn:hover { background-color: #60a5fa; }
+
+        /* Notification */
+        .notification { 
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            background: #22c55e; 
+            color: white; 
+            padding: 15px 20px; 
+            border-radius: 10px; 
+            box-shadow: var(--shadow-lg); 
+            transform: translateY(150px); 
+            opacity: 0; 
+            transition: all 0.4s ease-out; 
+            z-index: 1000; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .notification.show { transform: translateY(0); opacity: 1; }
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            .header p {
-                font-size: 1rem;
-            }
-            .resume-grid {
-                grid-template-columns: 1fr;
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
                 gap: 20px;
             }
-            .resume-card {
-                padding: 20px;
-            }
-            .card-actions {
-                flex-direction: column;
-            }
-            .btn {
+            
+            .contact-links {
                 justify-content: center;
             }
-        }
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #28a745, #20c997);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transform: translateX(400px);
-            transition: transform 0.3s ease-out;
-            z-index: 1000;
-        }
-        .notification.show {
-            transform: translateX(0);
+            
+            .experience-item .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .project-card .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .resume-downloads {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <div class="header">
-            <h1><i class="fas fa-user-tie"></i> Neeraj Butola</h1>
-            <p>Explore my different resume versions tailored for various roles</p>
-        </div>
-        <div class="resume-grid">
-            <div class="resume-card">
-                <div class="card-icon">
-                    <i class="fas fa-cogs"></i>
-                </div>
-                <h3 class="card-title">Build/Development Focus</h3>
-                <p class="card-description">
-                    Resume highlighting build tools, CI/CD, and development infrastructure expertise.
-                    Perfect for DevOps and Build Engineer positions.
-                </p>
-                <div class="card-actions">
-                    <a href="https://github.com/Frostdev7506/Automatic-resume/raw/build/Neeraj_Butola_Resume.pdf"
-                       class="btn btn-primary" download>
-                        <i class="fas fa-download"></i> Download PDF
-                    </a>
-                </div>
+        <header class="header">
+            <div class="header-title">
+                <h1>Neeraj Butola</h1>
+                <p>Full Stack Developer</p>
             </div>
-            <div class="resume-card">
-                <div class="card-icon">
-                    <i class="fab fa-js-square"></i>
-                </div>
-                <h3 class="card-title">JavaScript/Frontend Focus</h3>
-                <p class="card-description">
-                    Resume showcasing JavaScript, React, and frontend development skills.
-                    Ideal for Frontend Developer and JavaScript Engineer roles.
-                </p>
-                <div class="card-actions">
-                    <a href="https://github.com/Frostdev7506/Automatic-resume/raw/js/Neeraj_Butola_Resume.pdf"
-                       class="btn btn-primary" download>
-                        <i class="fas fa-download"></i> Download PDF
-                    </a>
-                </div>
+            <div class="theme-switcher" id="theme-toggle">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
             </div>
-            <div class="resume-card">
-                <div class="card-icon">
-                    <i class="fab fa-python"></i>
+        </header>
+
+        <main>
+            <section class="section">
+                <div class="contact-links">
+                    <a href="mailto:Neerajbutola8910@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://github.com/Frostdev7506" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/neeraj-butola" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://neerajbutola.netlify.app" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
                 </div>
-                <h3 class="card-title">Python/Backend Focus</h3>
-                <p class="card-description">
-                    Resume emphasizing Python, Django, and backend development experience.
-                    Great for Python Developer and Backend Engineer positions.
-                </p>
-                <div class="card-actions">
-                    <a href="https://github.com/Frostdev7506/Automatic-resume/raw/python/Neeraj_Butola_Resume.pdf"
-                       class="btn btn-primary" download>
-                        <i class="fas fa-download"></i> Download PDF
-                    </a>
+            </section>
+
+            <section class="section" id="summary">
+                <h2 class="section-title">Professional Summary</h2>
+                <p>Full Stack Developer with 3.7+ years of experience in designing, developing, and deploying web applications using the MERN stack (MongoDB, Express.js, React, Node.js) along with Python backends. Skilled in leveraging AWS/Azure cloud services, Linux environments, and modern DevOps practices to build scalable, secure, and high-performance applications. Strong expertise in RESTful APIs, microservices, and CI/CD pipelines.</p>
+            </section>
+
+            <section class="section" id="experience">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="card experience-item">
+                    <div class="job-header">
+                        <h4>Software Engineer</h4>
+                        <span class="date">Jul 2025 – Present</span>
+                    </div>
+                    <p class="company">Neoveda Technologies</p>
+                    <ul>
+                        <li>Designed and deployed full-stack solutions using the MERN stack on AWS EC2, Lambda, and S3, integrating Python microservices for backend processing.</li>
+                        <li>Developed and optimized React-based dashboards with Redux, improving UI responsiveness by 30%.</li>
+                        <li>Led performance optimization initiatives, improving Core Web Vitals (LCP, FID, CLS) by over 25% through code splitting, asset optimization, and server-side rendering techniques.</li>
+                        <li>Engineered and executed complex database schema migrations in across  microservices to support new boltic 2.0 features and facilitate seamless third-party app integrations.</li>
+                        <li>Implemented robust, asynchronous task processing systems using Redis for caching and dedicated worker queues with Kafka and NATS to handle background jobs and real-time data streams.</li>
+                        <li>Built and managed automated CI/CD workflows for containerized deployments using Docker and Kubernetes, utilizing tools like k9s for efficient cluster management and monitoring.</li>
+                        <li>Engineered a full-stack observability solution using OpenTelemetry for traces and metrics, Grafana for visualization and analysis, and CloudWatch for alerting, slashing application downtime by 20%</li>
+                    </ul>
                 </div>
-            </div>
-        </div>
+<div class="card experience-item">
+                    <div class="job-header">
+                        <h4>Associate Software Developer</h4>
+                        <span class="date">May 2023 – Jul 2025</span>
+                    </div>
+                    <p class="company">ONEAGROW FINTECH</p>
+                    <ul>
+                        <li>Architected and developed secure, multi-tenant dashboards for merchant KYC and document verification, implementing a granular Role-Based Access Control (RBAC) system secured with JWT to ensure authorized access to sensitive data.</li>
+                        <li>Engineered end-to-end payment processing flows by integrating multiple gateways like Razorpay and Easebuzz, and implemented a redundant API from partner banks to ensure high availability and failover.</li>
+                        <li>Developed a cross-platform mobile payment application using React Native, enabling users to perform secure transactions on the go.</li>
+                        <li>Integrated third-party APIs for critical functionalities, including Aadhaar API for e-KYC verification and Zoop for digital signatures, ensuring compliance and a seamless onboarding experience.</li>
+                        <li>Implemented a cost-optimization strategy by automating the start/stop of non-critical microservices during off-peak hours, significantly reducing nightly infrastructure billing.</li>
+                        <li>Designed and configured scalable cloud infrastructure on AWS, utilizing Route 53 for DNS management and Application Load Balancers (ALB) for intelligent traffic routing across services.</li>
+                        <li>Optimized system performance through caching, load balancing, and CDNs, achieving a 35% reduction in latency.</li>
+                        <li>Implemented comprehensive unit and integration tests (Jest, PyTest), which led to a 25% decrease in production bugs.</li>
+                    </ul>s
+                </div>
+                 <div class="card experience-item">
+                    <div class="job-header">
+                        <h4>New Associate</h4>
+                        <span class="date">Dec 2021 – Apr 2023</span>
+                    </div>
+                    <p class="company">Accenture</p>
+                    <ul>
+                        <li>Deployed and supported enterprise MERN stack applications on Azure and AWS.</li>
+                        <li>Designed reusable React components with Hooks and Redux, reducing development time by 20%.</li>
+                        <li>Automated CI/CD pipelines with GitHub Actions and Docker, reducing manual deployment efforts by 80%.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="section" id="skills">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="card">
+                    <h4>Frameworks & Libraries</h4>
+                    <div class="skills-grid">
+                        <span class="skill-badge">React</span><span class="skill-badge">Node.js</span><span class="skill-badge">Express</span><span class="skill-badge">Redux</span><span class="skill-badge">Angular</span><span class="skill-badge">Java Spring Boot</span>
+                    </div>
+                    <br>
+                    <h4>Databases</h4>
+                    <div class="skills-grid">
+                        <span class="skill-badge">MongoDB</span><span class="skill-badge">PostgreSQL</span><span class="skill-badge">MySQL</span><span class="skill-badge">MSSQL</span>
+                    </div>
+                     <br>
+                    <h4>Tools & Methodologies</h4>
+                     <div class="skills-grid">
+                        <span class="skill-badge">Git</span><span class="skill-badge">Docker</span><span class="skill-badge">Kubernetes</span><span class="skill-badge">CI/CD</span><span class="skill-badge">Cypress</span><span class="skill-badge">Jest</span><span class="skill-badge">Linux</span><span class="skill-badge">Bash</span><span class="skill-badge">Webpack</span><span class="skill-badge">GCP</span><span class="skill-badge">AWS</span><span class="skill-badge">Azure</span><span class="skill-badge">Kafka</span><span class="skill-badge">TypeScript</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="projects">
+                <h2 class="section-title">Projects</h2>
+                <div class="card project-card">
+                    <div class="project-header">
+                        <h4>Pupils - Student LMS</h4>
+                        <a href="#" class="view-demo">View Demo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <p class="company">PostgreSQL, Node, Express, React, Tailwind, Redux</p>
+                    <ul>
+                        <li>Built role-based authentication and REST APIs; deployed on Linux servers with secure access controls.</li>
+                        <li>Developed responsive frontend improving student/parent/admin experience.</li>
+                    </ul>
+                </div>
+                 <div class="card project-card">
+                    <div class="project-header">
+                        <h4>Greattr - Android Apps</h4>
+                        <a href="#" class="view-demo">View Demo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                     <p class="company">React Native, Node, Express, MSSQL, PostgreSQL, Java</p>
+                     <ul>
+                        <li>Developed secure Android applications with JWT authentication, SSL pinning, and root detection.</li>
+                        <li>Designed and deployed cloud-hosted backend services on AWS EC2 with Linux hardening.</li>
+                    </ul>
+                </div>
+                 <div class="card project-card">
+                    <div class="project-header">
+                        <h4>Greattr Onboarding Portal + Landing Page</h4>
+                        <a href="#" class="view-demo">View Demo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                     <p class="company">PostgreSQL, Node, Cypress, Python, Angular</p>
+                    <ul>
+                        <li>Developed a scalable onboarding portal with Angular, Node.js, and Redux state management.</li>
+                        <li>Integrated OKYC Aadhaar APIs for digital KYC verification and secure Aadhaar E-sign workflows.</li>
+                        <li>Automated QA and deployment using Cypress tests, Python scripts, and CI/CD pipelines.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="section" id="certifications">
+                <h2 class="section-title">Certifications</h2>
+                 <div class="card">
+                    <div class="skills-grid">
+                        <span class="skill-badge">Azure Administrator (AZ-104)</span>
+                        <span class="skill-badge">Azure Security (SC-900)</span>
+                        <span class="skill-badge">AWS Certified Cloud Practitioner</span>
+                        <span class="skill-badge">Azure Fundamentals (AZ-900)</span>
+                        <span class="skill-badge">Azure Data Fundamentals (DP-900)</span>
+                        <span class="skill-badge">Azure AI Fundamentals (AI-900)</span>
+                    </div>
+                </div>
+            </section>
+
+             <section class="section" id="education">
+                <h2 class="section-title">Education</h2>
+                <div class="card experience-item">
+                    <div class="job-header">
+                        <h4>Bachelor's Degree (BSc Computer Science)</h4>
+                        <span class="date">2017 – 2020</span>
+                    </div>
+                    <p class="company">Mumbai University</p>
+                </div>
+            </section>
+
+             <section class="section" id="downloads">
+                <h2 class="section-title">Resume Downloads</h2>
+                <div class="resume-downloads">
+                    <div class="download-card">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Build/Development Focus</h3>
+                        <p>Tailored for DevOps and Build Engineer roles.</p>
+                        <a href="https://github.com/Frostdev7506/Automatic-resume/raw/build/Neeraj_Butola_Resume.pdf" class="btn" download>
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                    </div>
+                    <div class="download-card">
+                        <i class="fab fa-js-square"></i>
+                        <h3>JavaScript/Frontend Focus</h3>
+                        <p>Ideal for Frontend and JavaScript Engineer roles.</p>
+                         <a href="https://github.com/Frostdev7506/Automatic-resume/raw/js/Neeraj_Butola_Resume.pdf" class="btn" download>
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                    </div>
+                    <div class="download-card">
+                        <i class="fab fa-python"></i>
+                        <h3>Python/Backend Focus</h3>
+                        <p>Great for Python and Backend Engineer positions.</p>
+                        <a href="https://github.com/Frostdev7506/Automatic-resume/raw/python/Neeraj_Butola_Resume.pdf" class="btn" download>
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
+
     <div id="notification" class="notification">
         <i class="fas fa-check-circle"></i>
         <span id="notificationText">Download started!</span>
     </div>
+
     <script>
-        function showDownloadNotification(branch) {
-            const notification = document.getElementById('notification');
-            const notificationText = document.getElementById('notificationText');
-           
-            notificationText.textContent = `${branch.charAt(0).toUpperCase() + branch.slice(1)} resume download started!`;
-            notification.classList.add('show');
-           
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-        // Add click event listeners to download buttons
-        document.querySelectorAll('.btn-primary').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const branch = this.href.split('/').slice(-2, -1)[0];
-                showDownloadNotification(branch);
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Theme Toggler ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const htmlEl = document.documentElement;
+
+            // Function to set theme
+            const setTheme = (theme) => {
+                if (theme === 'dark') {
+                    htmlEl.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    htmlEl.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+            };
+            
+            // Check for saved theme in local storage or user's system preference
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            setTheme(savedTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlEl.classList.contains('dark') ? 'light' : 'dark';
+                setTheme(currentTheme);
+            });
+
+            // --- Scroll Animations ---
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // --- Download Notification ---
+            function showDownloadNotification(branch) {
+                const notification = document.getElementById('notification');
+                const notificationText = document.getElementById('notificationText');
+                
+                const formattedName = branch.replace(/Focus/g, '').replace(/([A-Z])/g, ' $1').trim();
+                notificationText.textContent = `${formattedName} resume download started!`;
+                notification.classList.add('show');
+            
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+
+            document.querySelectorAll('.download-card .btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const cardTitle = this.closest('.download-card').querySelector('h3').textContent;
+                    showDownloadNotification(cardTitle);
+                });
             });
         });
-        // Entrance animations on scroll (simplified, no observer for perf)
-        const cards = document.querySelectorAll('.resume-card');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target); // One-time animation
-                }
-            });
-        }, { threshold: 0.1 });
-        cards.forEach(card => observer.observe(card));
     </script>
 </body>
 </html>
