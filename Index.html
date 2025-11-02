@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neeraj Butola - Resume Collection</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+        .header h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .resume-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease-out;
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+            overflow: hidden;
+            will-change: transform, opacity;
+        }
+        .resume-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        .resume-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeInScale 0.6s ease-out 0.2s forwards;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: slideUp 0.5s ease-out 0.4s forwards;
+        }
+        .card-description {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: slideUp 0.5s ease-out 0.6s forwards;
+        }
+        .card-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: slideUp 0.5s ease-out 0.8s forwards;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease-out;
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(102, 126, 234, 0.3);
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+            .resume-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .resume-card {
+                padding: 20px;
+            }
+            .card-actions {
+                flex-direction: column;
+            }
+            .btn {
+                justify-content: center;
+            }
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateX(400px);
+            transition: transform 0.3s ease-out;
+            z-index: 1000;
+        }
+        .notification.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-user-tie"></i> Neeraj Butola</h1>
+            <p>Explore my different resume versions tailored for various roles</p>
+        </div>
+        <div class="resume-grid">
+            <div class="resume-card">
+                <div class="card-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3 class="card-title">Build/Development Focus</h3>
+                <p class="card-description">
+                    Resume highlighting build tools, CI/CD, and development infrastructure expertise.
+                    Perfect for DevOps and Build Engineer positions.
+                </p>
+                <div class="card-actions">
+                    <a href="https://github.com/Frostdev7506/Automatic-resume/raw/build/Neeraj_Butola_Resume.pdf"
+                       class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+            <div class="resume-card">
+                <div class="card-icon">
+                    <i class="fab fa-js-square"></i>
+                </div>
+                <h3 class="card-title">JavaScript/Frontend Focus</h3>
+                <p class="card-description">
+                    Resume showcasing JavaScript, React, and frontend development skills.
+                    Ideal for Frontend Developer and JavaScript Engineer roles.
+                </p>
+                <div class="card-actions">
+                    <a href="https://github.com/Frostdev7506/Automatic-resume/raw/js/Neeraj_Butola_Resume.pdf"
+                       class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+            <div class="resume-card">
+                <div class="card-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h3 class="card-title">Python/Backend Focus</h3>
+                <p class="card-description">
+                    Resume emphasizing Python, Django, and backend development experience.
+                    Great for Python Developer and Backend Engineer positions.
+                </p>
+                <div class="card-actions">
+                    <a href="https://github.com/Frostdev7506/Automatic-resume/raw/python/Neeraj_Butola_Resume.pdf"
+                       class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="notification" class="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Download started!</span>
+    </div>
+    <script>
+        function showDownloadNotification(branch) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+           
+            notificationText.textContent = `${branch.charAt(0).toUpperCase() + branch.slice(1)} resume download started!`;
+            notification.classList.add('show');
+           
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        // Add click event listeners to download buttons
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const branch = this.href.split('/').slice(-2, -1)[0];
+                showDownloadNotification(branch);
+            });
+        });
+        // Entrance animations on scroll (simplified, no observer for perf)
+        const cards = document.querySelectorAll('.resume-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // One-time animation
+                }
+            });
+        }, { threshold: 0.1 });
+        cards.forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>
