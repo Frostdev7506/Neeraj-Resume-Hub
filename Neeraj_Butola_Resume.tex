@@ -2,7 +2,7 @@
 %	DOCUMENT DEFINITION
 %----------------------------------------------------------------------------------------
 
-\documentclass[a4paper,8pt]{extarticle}  % 8pt to fit one page
+\documentclass[a4paper,8pt]{extarticle}  % 7pt to fit one page
 
 %----------------------------------------------------------------------------------------
 %	FONT
@@ -62,7 +62,7 @@
 % PROFESSIONAL SUMMARY
 %----------------------------------------------------------------------------------------
 \section{Professional Summary}
-\textbf{Full Stack Developer} with 3.7+ years of experience in designing, developing, and deploying web applications using the \textbf{MERN stack (MongoDB, Express.js, React, Node.js)} along with \textbf{Python} backends. Skilled in leveraging \textbf{AWS/Azure cloud services}, \textbf{Linux environments}, and modern DevOps practices to build \textbf{scalable}, \textbf{secure}, and \textbf{high-performance} applications. Strong expertise in RESTful APIs, microservices, and CI/CD pipelines. Proven ability to deliver \textbf{enterprise-grade dashboards, web apps, and mobile applications}, collaborating effectively with cross-functional teams to ensure timely and efficient delivery of solutions.
+\textbf{Senior Full Stack (MERN) + Cloud Engineer} with 3.7+ years building secure, scalable products across \textbf{MongoDB, Express.js, React/React Native, Node.js} and \textbf{Python} backends. Spearheaded end-to-end delivery of microservice platforms on \textbf{AWS} (EC2, ECS/EKS, S3, CloudFront, Lambda), implemented \textbf{Nginx reverse proxy}, rate limiting, security headers, API key auth, and robust CI/CD. Frontend specialist in \textbf{React, Next.js, Vite} with \textbf{pixel-perfect} UI and strong \textbf{SEO} (CWV, structured data). Deep experience with \textbf{Strapi}, \textbf{Redis}, \textbf{Kafka}, \textbf{NATS}, \textbf{Kubernetes}, and event-driven architectures. 
 
 %----------------------------------------------------------------------------------------
 % WORK EXPERIENCE
@@ -74,24 +74,34 @@
 \multicolumn{2}{@{}X@{}}{
 \begin{minipage}[t]{\linewidth}
 \begin{itemize}
-  \item[--] Designed and deployed full-stack solutions using the \textbf{MERN stack (React, Node.js, Express, MongoDB)} on \textbf{AWS EC2, Lambda, and S3}, integrating \textbf{Python microservices} for backend data processing.
-  \item[--] Developed and optimized \textbf{React-based dashboards} with Redux state management and REST APIs, improving UI responsiveness by 30\%.
-  \item[--] Enhanced observability by implementing structured logging, monitoring scripts on Linux, and CloudWatch alerts, reducing downtime by 20\%.
-  \item[--] Built automated CI/CD workflows for containerized deployments using \textbf{Docker and Kubernetes}, ensuring zero-downtime production releases.
+  \item[--] \textbf{Spearheaded migration} of Node.js microservices powering an AI workflow product (\emph{similar to Boltic-class orchestration}) to a \textbf{containerized architecture} on \textbf{Kubernetes (EKS)} with \textbf{event-driven} patterns using \textbf{Kafka} and \textbf{NATS}; improved deployment velocity and reliability.
+  \item[--] Led \textbf{service decomposition \& decoupling} from monolithic services into domain-aligned microservices; standardized \textbf{API contracts}, observability, retries, and backoff policies across \textbf{Node.js/Express} services.
+  \item[--] Developed and maintained \textbf{full-stack applications} with \textbf{React} and \textbf{Angular} frontends consuming backend REST APIs; implemented component-based UI design and state management for high performance.
+  \item[--] \textbf{Architected RESTful APIs} from scratch — including route design, async flow, authentication, and validation; applied best practices for idempotency, pagination, and caching. Ensured adherence to REST principles and security measures (rate limiting, JWT/OAuth2).
+  
+  \item[--] Designed resilient systems with \textbf{Node.js clusters}, streams, buffers, and inter-process communication (spawn/fork/patch); optimized memory handling and implemented tools to fix potential memory leaks.
+  \item[--] Built and optimized SQL procedures and indexes across \textbf{PostgreSQL}, \textbf{MySQL}, and \textbf{MongoDB}; wrote stored procedures, analyzed query plans, and tuned indexes for high-volume transactions.
+  \item[--] Developed \textbf{secure ingress with Nginx}, enforced API key validation, HSTS, CSP, CORS, and rate limits; integrated \textbf{Redis} for caching and queueing; optimized \textbf{raw SQL} execution paths for hot transactions.
+  \item[--] Owned \textbf{SEO \& performance metrics}: Next.js SSR/ISR, Core Web Vitals (LCP/CLS/INP), sitemaps, canonical/OG tags, schema.org; CDN tuning on \textbf{CloudFront}.
+  \item[--] Integrated \textbf{Strapi CMS} for headless content management; developed webhook-driven pipelines connecting CMS events with backend microservices.
+  
 \end{itemize}
 \end{minipage}
 }
 \end{tabularx}
+
 
 \begin{tabularx}{\linewidth}{ @{}l r@{} }
 \textbf{Associate Software Developer (ONEAGROW FINTECH)} & \hfill May 2023 -- Jul 2025 \\[3pt]
 \multicolumn{2}{@{}X@{}}{
 \begin{minipage}[t]{\linewidth}
 \begin{itemize}
-  \item[--] \textbf{Developed and maintained} secure fintech applications using the \textbf{MERN stack (React, Node.js, Express, MongoDB)} and \textbf{Python APIs}, deployed across AWS and Azure.
-  \item[--] Built and scaled \textbf{React-driven dashboards} for loan, KYC, and payment modules, integrating REST APIs and WebSockets for real-time updates.
-  \item[--] Optimized performance through caching, load balancing, CDNs, and Linux server tuning, reducing latency by 35\%.
-  \item[--] Implemented unit and integration tests (Jest, React Testing Library, PyTest) to improve code reliability and reduce production bugs by 25\%.
+  \item[--] \textbf{Owned end-to-end architecture \& delivery} for \textbf{Greattr} fintech suite: React/React Native frontends, Node/Express microservices, and data stores (PostgreSQL/MSSQL/MongoDB).
+  \item[--] \textbf{Built from scratch on AWS}: frontend on \textbf{S3 + CloudFront}; backend on \textbf{EC2} and \textbf{ECS} for decoupled services; blue/green deploys with Docker and GitHub Actions.
+  \item[--] \textbf{Integrated 3rd-party platforms} at scale: \emph{KYC/eKYC (Aadhaar/OKYC), payments, SMS/email, analytics, maps, notifications (FCM/SES/SNS)}, and fraud signals; standardized adapters and secrets management.
+  \item[--] Implemented \textbf{Nginx reverse proxy} as edge gateway (TLS, API key checks, rate limiting, security headers, strict CORS); hardened Linux hosts.
+  \item[--] Delivered \textbf{pixel-perfect} UIs with \textbf{React, Next.js, Vite, React Native}; design-system governance, a11y, and performance budgets.
+  \item[--] \textbf{Performance \& reliability}: hot paths via \textbf{raw SQL} (no ORM), lazy loading caching with redis and usage of async queues(Bull/BullMQ), idempotency keys, and saga-style workflows to ensure at lest Eventual consistency.
 \end{itemize}
 \end{minipage}
 }
@@ -102,10 +112,8 @@
 \multicolumn{2}{@{}X@{}}{
 \begin{minipage}[t]{\linewidth}
 \begin{itemize}
-  \item[--] \textbf{Deployed and supported} enterprise applications built with the \textbf{MERN stack (React, Node.js, Express, MongoDB)} on \textbf{Azure and AWS}, integrating Python services for automation tasks.
-  \item[--] Designed and maintained reusable \textbf{React components} and UI modules with Hooks and Redux, reducing development time by 20\%.
-  \item[--] Leveraged \textbf{Linux-based VMs}, Redis cache, and CDN integration to enhance reliability and scalability of cloud applications.
-  \item[--] Automated CI/CD pipelines with GitHub Actions, Docker, and Bash/Python scripts, reducing manual deployment efforts by 80\%.
+  \item[--] Supported enterprise apps on \textbf{Azure/AWS} using \textbf{React, Node.js, Express, MongoDB}; automated CI/CD with GitHub Actions, Docker, Bash/Python.
+  \item[--] Built reusable React components (Hooks/Redux) and improved reliability with Redis caching and CDN integration.
 \end{itemize}
 \end{minipage}
 }
@@ -121,37 +129,34 @@
 \multicolumn{2}{@{}X@{}}{
 \begin{minipage}[t]{\linewidth}
 \begin{itemize}
-  \item[--] Built role-based authentication and REST APIs with Node/Express and PostgreSQL; deployed on Linux servers with secure access controls.
-  \item[--] Developed responsive frontend using React, Redux, and Tailwind, improving student/parent/admin experience.
-  \item[--] Extended system with Android app integration and AWS SNS for real-time notifications and updates.
+  \item[--] Role-based auth, REST APIs, and secure deployments on Linux; \textbf{React + Vite + Tailwind} for responsive, accessible UI.
+  \item[--] AWS SNS for real-time notifications; modular services with clean interfaces for future mobile integrations.
 \end{itemize}
 \end{minipage}
 }
 \end{tabularx}
 
 \begin{tabularx}{\linewidth}{@{}l r@{}}
-\textbf{Greattr - Android Apps (React Native, Node, Express, MSSQL, PostgreSQL, Java)} & \hfill \href{https://github.com/Frostdev7506/Lyriks}{View Demo} \\[3pt]
+\textbf{Greattr - Fintech Apps (React Native, React, Node, Express, MSSQL, PostgreSQL)} & \hfill \href{https://github.com/Frostdev7506/Lyriks}{View Demo} \\[3pt]
 \multicolumn{2}{@{}X@{}}{
 \begin{minipage}[t]{\linewidth}
 \begin{itemize}
-  \item[--] \textbf{Developed secure Android applications} with \textbf{React Native and Node.js}, integrating JWT authentication, SSL pinning, and root detection for enhanced security.
-  \item[--] Designed and deployed cloud-hosted backend services on \textbf{AWS EC2 with Linux hardening}, ensuring scalability and compliance with fintech standards.
-  \item[--] Integrated \textbf{Firebase Cloud Messaging (FCM)} for push notifications and built merchant dashboards to track loan, repayment, and user analytics in real time.
-  \item[--] Optimized database queries in \textbf{PostgreSQL and MSSQL}, improving transaction performance and reducing API response time by 25\%.
+  \item[--] \textbf{Greenfield build on AWS}: frontend via \textbf{S3 + CloudFront}; backend on \textbf{EC2 + ECS}; pipelines with Docker \& GitHub Actions; Linux hardening.
+  \item[--] \textbf{Pixel-perfect} web \& mobile UI using \textbf{React, Next.js, Vite, React Native}; consistent design tokens and theming.
+  \item[--] Security-first: Nginx gateway with \textbf{API key} auth, TLS, CSP, HSTS, \textbf{rate limiting}, strict CORS; \textbf{sanitized inputs} and SQL hardening.
+  \item[--] Data \& messaging: Redis caching/queues, \textbf{Kafka/NATS} for events; hot paths with optimized \textbf{raw SQL} (no ORM).
+  \item[--] Rich integrations: \textbf{KYC}, payments, \textbf{FCM}, email/SMS, analytics, maps; dashboards for real-time merchant insights.
 \end{itemize}
 \end{minipage}
 }
 \end{tabularx}
 
 \begin{tabularx}{\linewidth}{@{}l r@{}}
-\textbf{Greattr Onboarding Portal + Landing Page (PostgreSQL, Node, Cypress, Python, Angular)} & \hfill \href{https://www.greattr.com}{View Demo} \\[3pt]
+\textbf{Greattr Onboarding Portal (PostgreSQL, Node, Cypress, Python, Angular)} & \hfill \href{https://www.greattr.com}{View Demo} \\[3pt]
 \multicolumn{2}{@{}X@{}}{
 \begin{minipage}[t]{\linewidth}
 \begin{itemize}
-  \item[--] \textbf{Developed a scalable onboarding portal} with \textbf{Angular, Node.js, and Redux state management}, enabling seamless user registration and profile management.
-  \item[--] Integrated \textbf{OKYC Aadhaar APIs} for digital KYC verification and secure Aadhaar E-sign workflows, ensuring compliance with RBI fintech regulations.
-  \item[--] Automated QA and deployment using \textbf{Cypress tests, Python scripts, and CI/CD pipelines}, reducing manual testing efforts by 40\%.
-  \item[--] Deployed on \textbf{Linux servers with Docker}, improving system reliability and reducing downtime during releases.
+  \item[--] Scalable onboarding with Angular + Node; \textbf{OKYC Aadhaar} for eKYC and e-sign; Cypress suites and Dockerized CI/CD.
 \end{itemize}
 \end{minipage}
 }
@@ -162,7 +167,7 @@
 %----------------------------------------------------------------------------------------
 \section{Education}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-2017 -- 2020 & \textbf{Bachelor's Degree (BSc Computer Science)}, Mumbai University \\
+2017 -- 2020 & \textbf{Bachelor of Science in Computer Science}, Mumbai University \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -170,9 +175,9 @@
 %----------------------------------------------------------------------------------------
 \section{Certifications}
 \begin{tabularx}{\linewidth}{@{}l X l@{}}
-\textbf{Azure Administrator (AZ-104)} & & \textbf{Azure Fundamentals (AZ-900)} \\
-\textbf{Azure Security (SC-900)} & & \textbf{Azure Data Fundamentals (DP-900)} \\
-\textbf{AWS Certified Cloud Practitioner} & & \textbf{Azure AI Fundamentals (AI-900)} \\
+\textbf{AWS Certified Cloud Practitioner} & & \textbf{Microsoft Certified: Azure Administrator (AZ-104)} \\
+\textbf{Azure Fundamentals (AZ-900)} & & \textbf{Azure Security (SC-900)} \\
+\textbf{Azure Data Fundamentals (DP-900)} & & \textbf{Azure AI Fundamentals (AI-900)} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -180,11 +185,13 @@
 %----------------------------------------------------------------------------------------
 \section{Technical Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-\textbf{Frameworks/Libraries:} & \textbf{React}, \textbf{Node}, \textbf{Express}, Redux, Angular, Java Spring Boot \\
-\textbf{Databases:} & \textbf{MongoDB}, PostgreSQL, MySQL, MSSQL \\
-\textbf{Tools/Methodologies:} & Git, Docker, Kubernetes, CI/CD, Cypress, Jest, Linux, Bash, Webpack, GCP, AWS, Azure, Bull, Kafka, TypeScript \\
-\textbf{Other:} & REST APIs, Microservices, Security Best Practices, Automated Testing, Responsive Web Design \\
+\textbf{Frontend:} & \textbf{React}, React Native, Next.js, Vite, Tailwind, Redux, TypeScript, Accessibility (WCAG), SEO (CWV, schema.org) \\
+\textbf{Backend:} & \textbf{Node.js}, Express.js, Python (Flask/FastAPI), REST APIs, Microservices, \textbf{Strapi (Headless CMS)} \\
+\textbf{Data/Messaging:} & \textbf{MongoDB}, PostgreSQL, MySQL, MSSQL, \textbf{Redis}, \textbf{Kafka}, \textbf{NATS} \\
+\textbf{Cloud/DevOps:} & \textbf{AWS (EC2, S3, CloudFront, ECS, EKS, Lambda)}, Docker, Kubernetes, Nginx, CI/CD (GitHub Actions), CloudWatch \\
+\textbf{Security:} & API Keys, TLS/HTTPS, CORS, CSP/HSTS, Rate Limiting, Input Sanitization, SQL Hardening, Linux Hardening \\
 \end{tabularx}
 
 \vfill
 \end{document}
+
